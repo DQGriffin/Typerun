@@ -139,6 +139,7 @@
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="MessageCenter.cpp" />
     <ClCompile Include="Word.cpp" />
+    <ClCompile Include="WordManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineCore.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Message.h" />
     <ClInclude Include="MessageCenter.h" />
     <ClInclude Include="Word.h" />
+    <ClInclude Include="WordManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
