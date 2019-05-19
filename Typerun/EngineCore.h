@@ -26,9 +26,12 @@ private:
 	sf::Color background_color;
 	sf::Color initial_word_color;
 	sf::Color horizontal_bar_color;
+	sf::Color ui_text_color;
 	sf::RectangleShape ui_horizontal_bar;
 	Label ui_left_arrow;
 	Label ui_right_arrow;
+	Label ui_score_label;
+	Label ui_misses_label;
 
 public:
 	EngineCore();

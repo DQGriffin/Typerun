@@ -59,6 +59,7 @@ void EngineCore::initialize_colors()
 	background_color = sf::Color::Black;
 	initial_word_color = sf::Color(0, 255, 0);
 	horizontal_bar_color = sf::Color(205, 0, 205);
+	ui_text_color = sf::Color(0, 206, 205);
 }
 
 void EngineCore::initialize_ui()
@@ -70,7 +71,10 @@ void EngineCore::initialize_ui()
 
 	// Left and right arrows
 	ui_left_arrow = Label("LA", ">", font, 24, horizontal_bar_color, sf::Text::Regular, sf::Vector2f(10, height - 40));
-	ui_right_arrow = Label("LA", "<", font, 24, horizontal_bar_color, sf::Text::Regular, sf::Vector2f(300, height - 40));
+	ui_right_arrow = Label("RA", "<", font, 24, horizontal_bar_color, sf::Text::Regular, sf::Vector2f(300, height - 40));
+
+	ui_score_label = Label("UISC", "Score: ", font, 24, ui_text_color, sf::Text::Regular, sf::Vector2f((width / 2) - 150, height - 40));
+	ui_misses_label = Label("UIML", "Misses: ", font, 24, ui_text_color, sf::Text::Regular, sf::Vector2f((width / 2) + 50, height - 40));
 }
 
 //--------------------------------------------------------------------------
@@ -161,4 +165,6 @@ void EngineCore::display_ui()
 	window.draw(ui_horizontal_bar);
 	window.draw(ui_left_arrow.get_drawable());
 	window.draw(ui_right_arrow.get_drawable());
+	window.draw(ui_score_label.get_drawable());
+	window.draw(ui_misses_label.get_drawable());
 }
