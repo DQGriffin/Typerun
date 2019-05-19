@@ -21,7 +21,6 @@ EngineCore::EngineCore()
 	message_center.post_message("Engine initialized");
 	message_center.post_message("Height: " + std::to_string(height));
 	message_center.post_message("Width: " + std::to_string(width));
-	message_center.post_message("Test");
 }
 
 
