@@ -72,7 +72,7 @@ void WordManager::transfer_words(int max)
 	message_center->post_message("Transfering " + std::to_string(max) + " words");
 	for (int i = 0; i < max; i++)
 	{
-		Word word = Word(word_cache.back(), sf::Vector2f(-50 * (random_x_pos() * 0.03), random_height()), initial_color, font);
+		Word word = Word(word_cache.back(), sf::Vector2f(-50 * (random_x_pos() * 0.03), random_y_pos()), initial_color, font);
 		word.viewport_width = viewport_width;
 		word.speed = random_speed();
 		words.push_back(word);
@@ -89,7 +89,7 @@ int WordManager::random_x_pos()
 	return result;
 }
 
-int WordManager::random_height()
+int WordManager::random_y_pos()
 {
 	std::random_device r;
 	std::default_random_engine e1(r());
