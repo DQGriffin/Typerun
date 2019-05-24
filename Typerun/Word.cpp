@@ -7,6 +7,7 @@
 Word::Word(std::string value, sf::Vector2f position, sf::Color initial_color, sf::Font& font)
 {
 	label = Label(value, value, font, 24, initial_color, sf::Text::Regular, position);
+	id = generate_id();
 }
 
 //--------------------------------------------------------------------------
@@ -64,5 +65,14 @@ void Word::update_color()
 	//message_center->post_message("G: " + std::to_string(g));
 
 	label.get_drawable().setFillColor(sf::Color(r, g, b));
+}
+
+int Word::generate_id()
+{
+	std::random_device r;
+	std::default_random_engine e1(r());
+	std::uniform_int_distribution<int> uniform_dist(min_id, max_id);
+	int result = uniform_dist(e1);
+	return result;
 }
 

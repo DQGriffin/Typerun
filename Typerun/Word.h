@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <random>
 #include "Label.h"
 #include "MessageCenter.h"
 
@@ -10,6 +11,9 @@ public:
 	int viewport_width;
 private:
 	Label label;
+	int id;
+	const int min_id = 11111;
+	const int max_id = 99999;
 public:
 	Word(std::string value, sf::Vector2f position, sf::Color initial_color, sf::Font& font);
 	void update();
@@ -17,5 +21,6 @@ public:
 private:
 	void update_position();
 	void update_color();
+	int generate_id();
 };
 
