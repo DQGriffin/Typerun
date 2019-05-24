@@ -70,7 +70,7 @@ void WordManager::transfer_words(int max)
 	message_center->post_message("Transfering " + std::to_string(max) + " words");
 	for (int i = 0; i < max; i++)
 	{
-		Word word = Word(word_cache.back(), sf::Vector2f(-50 * (random_width() * 0.02), random_height()), initial_color, font);
+		Word word = Word(word_cache.back(), sf::Vector2f(-50 * (random_width() * 0.03), random_height()), initial_color, font);
 		word.viewport_width = viewport_width;
 		words.push_back(word);
 		word_cache.pop_back();
