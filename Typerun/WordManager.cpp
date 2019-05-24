@@ -5,6 +5,9 @@ WordManager::WordManager()
 {
 }
 
+//--------------------------------------------------------------------------
+// WordManager constructor
+//--------------------------------------------------------------------------
 WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter* message_center, int width, int height) : font{font}, message_center{message_center}, viewport_width{width}, viewport_height{height}
 {
 	this->initial_color = initial_color;
@@ -18,6 +21,9 @@ WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter*
 	populate_word_cache();
 }
 
+//--------------------------------------------------------------------------
+// Transfers words from the cache if neccessary and updates all alive words
+//--------------------------------------------------------------------------
 void WordManager::update()
 {
 	if (words.size() < word_transfer_threshold)
@@ -31,6 +37,9 @@ void WordManager::update()
 	}
 }
 
+//--------------------------------------------------------------------------
+// Reads words from the dictionary file into the std::vector
+//--------------------------------------------------------------------------
 void WordManager::populate_word_cache()
 {
 	std::ifstream input_stream(dictionary_path, std::ios::in);
@@ -56,6 +65,9 @@ void WordManager::populate_word_cache()
 	shuffle_word_cache();
 }
 
+//--------------------------------------------------------------------------
+// Shuffles the words in the std::vector
+//--------------------------------------------------------------------------
 void WordManager::shuffle_word_cache()
 {
 	message_center->post_message("Shuffling words");
@@ -67,6 +79,9 @@ void WordManager::shuffle_word_cache()
 	message_center->post_message("Finished shuffling words");
 }
 
+//--------------------------------------------------------------------------
+// Transfer words from the cache to the Word vector
+//--------------------------------------------------------------------------
 void WordManager::transfer_words(int max)
 {
 	message_center->post_message("Transfering " + std::to_string(max) + " words");
@@ -80,6 +95,9 @@ void WordManager::transfer_words(int max)
 	}
 }
 
+//--------------------------------------------------------------------------
+// Generates and returns a random x-position
+//--------------------------------------------------------------------------
 int WordManager::random_x_pos()
 {
 	std::random_device r;
@@ -89,6 +107,9 @@ int WordManager::random_x_pos()
 	return result;
 }
 
+//--------------------------------------------------------------------------
+// Generates and returns a random y_position
+//--------------------------------------------------------------------------
 int WordManager::random_y_pos()
 {
 	std::random_device r;
@@ -98,6 +119,9 @@ int WordManager::random_y_pos()
 	return result;
 }
 
+//--------------------------------------------------------------------------
+// Generates and returns a random speed
+//--------------------------------------------------------------------------
 int WordManager::random_speed()
 {
 	std::random_device r;
