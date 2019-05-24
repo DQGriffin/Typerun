@@ -34,7 +34,7 @@ private:
 	void populate_word_cache();
 	void shuffle_word_cache();
 	void transfer_words(int max);
-	int random_width();
+	int random_x_pos();
 	int random_height();
 	int random_speed();
 };
