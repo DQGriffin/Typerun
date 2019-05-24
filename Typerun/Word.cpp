@@ -30,6 +30,11 @@ sf::Text& Word::get_drawable()
 	return label.get_drawable();
 }
 
+int Word::get_id()
+{
+	return id;
+}
+
 //--------------------------------------------------------------------------
 // Updates the Word's position
 //--------------------------------------------------------------------------
