@@ -13,7 +13,7 @@ WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter*
 	max_word_cache_size = 80000;
 	word_transfer_threshold = 10;
 	min_word_speed = 1;
-	max_word_speed = 4;
+	max_word_speed = 2;
 
 	populate_word_cache();
 }
