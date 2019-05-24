@@ -12,6 +12,8 @@ WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter*
 
 	max_word_cache_size = 80000;
 	word_transfer_threshold = 10;
+	min_word_speed = 1;
+	max_word_speed = 4;
 
 	populate_word_cache();
 }
@@ -72,6 +74,7 @@ void WordManager::transfer_words(int max)
 	{
 		Word word = Word(word_cache.back(), sf::Vector2f(-50 * (random_width() * 0.03), random_height()), initial_color, font);
 		word.viewport_width = viewport_width;
+		word.speed = random_speed();
 		words.push_back(word);
 		word_cache.pop_back();
 	}
@@ -91,6 +94,15 @@ int WordManager::random_height()
 	std::random_device r;
 	std::default_random_engine e1(r());
 	std::uniform_int_distribution<int> uniform_dist(0, viewport_height);
+	int result = uniform_dist(e1);
+	return result;
+}
+
+int WordManager::random_speed()
+{
+	std::random_device r;
+	std::default_random_engine e1(r());
+	std::uniform_int_distribution<int> uniform_dist(min_word_speed, max_word_speed);
 	int result = uniform_dist(e1);
 	return result;
 }

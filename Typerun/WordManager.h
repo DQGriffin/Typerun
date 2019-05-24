@@ -21,6 +21,8 @@ private:
 	int word_transfer_threshold;
 	int viewport_width;
 	int viewport_height;
+	int min_word_speed;
+	int max_word_speed;
 	std::vector<std::string> word_cache;
 	sf::Font font;
 	sf::Color initial_color;
@@ -34,5 +36,6 @@ private:
 	void transfer_words(int max);
 	int random_width();
 	int random_height();
+	int random_speed();
 };
 
