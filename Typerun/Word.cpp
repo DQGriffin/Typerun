@@ -60,8 +60,6 @@ void Word::update_color()
 		g -= (label.get_drawable().getPosition().x / 255) * (0.09 * speed);
 	}
 
-	std::cout << "R: " << r << std::endl;
-
 	//message_center->post_message("R: " + std::to_string(r));
 	//message_center->post_message("G: " + std::to_string(g));
 
