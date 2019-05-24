@@ -30,6 +30,9 @@ sf::Text& Word::get_drawable()
 	return label.get_drawable();
 }
 
+//--------------------------------------------------------------------------
+// Returns the Word's ID as an integer
+//--------------------------------------------------------------------------
 int Word::get_id()
 {
 	return id;
@@ -72,6 +75,9 @@ void Word::update_color()
 	label.get_drawable().setFillColor(sf::Color(r, g, b));
 }
 
+//--------------------------------------------------------------------------
+// Generates a (hopfully) unique ID
+//--------------------------------------------------------------------------
 int Word::generate_id()
 {
 	std::random_device r;
