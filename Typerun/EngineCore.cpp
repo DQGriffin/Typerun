@@ -22,7 +22,7 @@ EngineCore::EngineCore()
 	message_center.post_message("Height: " + std::to_string(height));
 	message_center.post_message("Width: " + std::to_string(width));
 
-	word_manager = WordManager(font, initial_word_color, &message_center, width, height);
+	word_manager = WordManager(font, initial_word_color, &message_center, width, ui_horizontal_bar.getPosition().y - 50);
 }
 
 
