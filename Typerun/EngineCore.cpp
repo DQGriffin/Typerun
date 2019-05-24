@@ -64,6 +64,9 @@ void EngineCore::initialize_colors()
 	ui_text_color = sf::Color(0, 206, 205);
 }
 
+//--------------------------------------------------------------------------
+// Initializes UI elements
+//--------------------------------------------------------------------------
 void EngineCore::initialize_ui()
 {
 	// Horizontal bar
@@ -135,6 +138,9 @@ void EngineCore::update()
 	update_words();
 }
 
+//--------------------------------------------------------------------------
+// Updates all currently alive words
+//--------------------------------------------------------------------------
 void EngineCore::update_words()
 {
 	word_manager.update();
@@ -151,6 +157,9 @@ void EngineCore::display_messages()
 	}
 }
 
+//--------------------------------------------------------------------------
+// Displays all alive words
+//--------------------------------------------------------------------------
 void EngineCore::display_words()
 {
 	for (Word& word : word_manager.words)
@@ -159,6 +168,9 @@ void EngineCore::display_words()
 	}
 }
 
+//--------------------------------------------------------------------------
+// Displays UI elements
+//--------------------------------------------------------------------------
 void EngineCore::display_ui()
 {
 	window.draw(ui_horizontal_bar);
