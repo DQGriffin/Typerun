@@ -21,6 +21,8 @@ EngineCore::EngineCore()
 	message_center.post_message("Engine initialized");
 	message_center.post_message("Height: " + std::to_string(height));
 	message_center.post_message("Width: " + std::to_string(width));
+
+	word_manager = WordManager(font, initial_word_color, &message_center, width, height);
 }
 
 
@@ -135,10 +137,7 @@ void EngineCore::update()
 
 void EngineCore::update_words()
 {
-	for (Word& word : words)
-	{
-		word.update();
-	}
+	word_manager.update();
 }
 
 //--------------------------------------------------------------------------
@@ -154,7 +153,7 @@ void EngineCore::display_messages()
 
 void EngineCore::display_words()
 {
-	for (Word& word : words)
+	for (Word& word : word_manager.words)
 	{
 		window.draw(word.get_drawable());
 	}

@@ -48,7 +48,7 @@ void Word::update_color()
 	int g = label.get_drawable().getFillColor().g;
 	int b = label.get_drawable().getFillColor().b;
 
-	if (r < 255)
+	if (r < 255 && get_drawable().getPosition().x > 0)
 	{
 		r = (label.get_drawable().getPosition().x * 5) * 0.06;
 		//g = 255 - ((label.get_drawable().getPosition().x * 5) * 0.04);
@@ -59,6 +59,8 @@ void Word::update_color()
 		//g -= 1;
 		g -= (label.get_drawable().getPosition().x / 255) * (0.09 * speed);
 	}
+
+	std::cout << "R: " << r << std::endl;
 
 	//message_center->post_message("R: " + std::to_string(r));
 	//message_center->post_message("G: " + std::to_string(g));

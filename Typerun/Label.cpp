@@ -8,7 +8,7 @@ Label::Label()
 //--------------------------------------------------------------------------
 // Label constructor
 //--------------------------------------------------------------------------
-Label::Label(std::string name, std::string text, sf::Font & font, int character_size, sf::Color color, sf::Text::Style style, sf::Vector2f position)
+Label::Label(std::string name, std::string text, sf::Font& font, int character_size, sf::Color color, sf::Text::Style style, sf::Vector2f position)
 {
 	this->name = name;
 	sf_text.setFont(font);

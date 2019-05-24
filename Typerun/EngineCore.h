@@ -6,6 +6,7 @@
 #include "MessageCenter.h"
 #include "Word.h"
 #include "Label.h"
+#include "WordManager.h"
 
 class EngineCore
 {
@@ -32,6 +33,7 @@ private:
 	Label ui_right_arrow;
 	Label ui_score_label;
 	Label ui_misses_label;
+	WordManager word_manager;
 
 public:
 	EngineCore();

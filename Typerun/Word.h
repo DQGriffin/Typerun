@@ -6,7 +6,6 @@
 class Word
 {
 public:
-	MessageCenter* message_center;
 	int speed = 1;
 	int viewport_width;
 private:
