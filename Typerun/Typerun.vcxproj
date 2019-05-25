@@ -138,6 +138,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="MessageCenter.cpp" />
+    <ClCompile Include="TextField.cpp" />
     <ClCompile Include="Word.cpp" />
     <ClCompile Include="WordManager.cpp" />
   </ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="Label.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="MessageCenter.h" />
+    <ClInclude Include="TextField.h" />
     <ClInclude Include="Word.h" />
     <ClInclude Include="WordManager.h" />
   </ItemGroup>
