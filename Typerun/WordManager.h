@@ -37,5 +37,6 @@ private:
 	int random_x_pos();
 	int random_y_pos();
 	int random_speed();
+	void remove_word(int id);
 };
 
