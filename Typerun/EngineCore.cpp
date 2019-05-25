@@ -12,6 +12,7 @@ EngineCore::EngineCore()
 	height = sf::VideoMode::getDesktopMode().height / 1.5;
 
 	paused = false;
+	score_increment = 20;
 
 	initialize_font();
 	initialize_colors();
@@ -23,6 +24,9 @@ EngineCore::EngineCore()
 	message_center.post_message("Width: " + std::to_string(width));
 
 	word_manager = WordManager(font, initial_word_color, &message_center, width, ui_horizontal_bar.getPosition().y - 50);
+	word_manager.average_onscreen_time = &average_onscreen_time;
+	word_manager.score = &score;
+	word_manager.misses = &misses;
 //	ui_text_field = TextField(sf::Vector2f(50, 50), ui_text_color, font);
 }
 
@@ -130,6 +134,7 @@ void EngineCore::game_loop()
 		message_center.update();
 		window.clear();
 		display_messages();
+		update_ui();
 		window.draw(shape);
 		display_words();
 		display_ui();
@@ -152,6 +157,12 @@ void EngineCore::update()
 void EngineCore::update_words()
 {
 	word_manager.update();
+}
+
+void EngineCore::update_ui()
+{
+	ui_score_label.set_text("Score: " + std::to_string(score));
+	ui_misses_label.set_text("Missed: " + std::to_string(misses));
 }
 
 //--------------------------------------------------------------------------
@@ -195,6 +206,7 @@ void EngineCore::query_input()
 	ui_text_field.clear();
 	if (result)
 	{
+		score += score_increment;
 		message_center.post_message("The correct word was entered");
 	}
 	else

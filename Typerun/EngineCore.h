@@ -12,7 +12,7 @@
 class EngineCore
 {
 public:
-	const std::string version = "0.1.0";
+	const std::string version = "0.1.1";
 	MessageCenter message_center;
 	std::vector<Word> words;
 private:
@@ -21,6 +21,8 @@ private:
 	int score;
 	int misses;
 	int maximum_misses;
+	int score_increment;
+	double average_onscreen_time;
 	bool display_debug_messages;
 	bool paused;
 	sf::RenderWindow window;
@@ -48,6 +50,7 @@ private:
 	void game_loop();
 	void update();
 	void update_words();
+	void update_ui();
 	void display_messages();
 	void display_words();
 	void display_ui();
