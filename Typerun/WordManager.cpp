@@ -16,7 +16,7 @@ WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter*
 	max_word_cache_size = 80000;
 	word_transfer_threshold = 10;
 	min_word_speed = 1;
-	max_word_speed = 2;
+	max_word_speed = 1;
 
 	populate_word_cache();
 }
@@ -41,6 +41,7 @@ void WordManager::update()
 		if (word.get_drawable().getPosition().x > viewport_width)
 		{
 			// The word is off-screen, notify the engine and remove the word from the vector
+			*misses += 1;
 			remove_word(word.get_id());
 		}
 	}
