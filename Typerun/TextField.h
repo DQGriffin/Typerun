@@ -8,5 +8,8 @@ private:
 public:
 	TextField();
 	~TextField();
+	void add_character(char character);
+	void remove_last_character();
+	std::string get_text();
 };
 
