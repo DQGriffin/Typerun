@@ -7,6 +7,7 @@
 #include "Word.h"
 #include "Label.h"
 #include "WordManager.h"
+#include "TextField.h"
 
 class EngineCore
 {
@@ -33,6 +34,7 @@ private:
 	Label ui_right_arrow;
 	Label ui_score_label;
 	Label ui_misses_label;
+	TextField ui_text_field;
 	WordManager word_manager;
 
 public:
@@ -49,5 +51,6 @@ private:
 	void display_messages();
 	void display_words();
 	void display_ui();
+	void parse_keyboard_input(sf::Event::KeyEvent key_event);
 };
 
