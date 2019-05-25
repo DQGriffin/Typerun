@@ -192,7 +192,6 @@ void EngineCore::display_ui()
 
 void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 {
-	// A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 	switch (key_event.code)
 	{
 	default:
@@ -277,6 +276,9 @@ void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 		break;
 	case sf::Keyboard::Z:
 		ui_text_field.add_character('z');
+		break;
+	case sf::Keyboard::Hyphen:
+		ui_text_field.add_character('-');
 		break;
 	}
 }
