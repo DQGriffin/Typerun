@@ -51,7 +51,7 @@ void WordManager::update()
 //--------------------------------------------------------------------------
 bool WordManager::query(std::string query)
 {
-	for (int index = 0; index <= words.size(); index++)
+	for (int index = 0; index < words.size(); index++)
 	{
 		if (words[index].get_drawable().getString().toAnsiString() == query)
 		{
