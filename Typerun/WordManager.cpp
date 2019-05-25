@@ -14,7 +14,7 @@ WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter*
 	dictionary_path = "dict.txt";
 
 	max_word_cache_size = 80000;
-	word_transfer_threshold = 50;
+	word_transfer_threshold = 10;
 	min_word_speed = 1;
 	max_word_speed = 2;
 
