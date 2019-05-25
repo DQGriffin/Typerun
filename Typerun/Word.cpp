@@ -9,8 +9,6 @@ Word::Word(std::string value, sf::Vector2f position, sf::Color initial_color, sf
 	label = Label(value, value, font, 24, initial_color, sf::Text::Regular, position);
 	id = generate_id();
 	alive = true;
-
-	std::cout << "Word = " << value << " | Initial X-Position = " << std::to_string(position.x) << std::endl;
 }
 
 Word& Word::operator=(Word w)
