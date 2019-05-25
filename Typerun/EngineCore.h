@@ -51,6 +51,7 @@ private:
 	void display_messages();
 	void display_words();
 	void display_ui();
+	void query_input();
 	void parse_keyboard_input(sf::Event::KeyEvent key_event);
 };
 

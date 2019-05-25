@@ -118,7 +118,6 @@ void EngineCore::game_loop()
 			}
 			else if (event.type == sf::Event::KeyReleased)
 			{
-				message_center.post_message("Key pressed");
 				parse_keyboard_input(event.key);
 			}
 
@@ -132,7 +131,7 @@ void EngineCore::game_loop()
 		window.clear();
 		display_messages();
 		window.draw(shape);
-		//display_words();
+		display_words();
 		display_ui();
 		window.display();
 	}
@@ -190,6 +189,20 @@ void EngineCore::display_ui()
 	window.draw(ui_text_field.get_drawable());
 }
 
+void EngineCore::query_input()
+{
+	bool result = word_manager.query(ui_text_field.get_text());
+	ui_text_field.clear();
+	if (result)
+	{
+		message_center.post_message("The correct word was entered");
+	}
+	else
+	{
+		message_center.post_message("The input was not correct");
+	}
+}
+
 void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 {
 	switch (key_event.code)
@@ -198,6 +211,9 @@ void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 		break;
 	case sf::Keyboard::Backspace:
 		ui_text_field.remove_last_character();
+		break;
+	case sf::Keyboard::Enter:
+		query_input();
 		break;
 	case sf::Keyboard::A:
 		ui_text_field.add_character('a');
