@@ -8,7 +8,7 @@ TextField::TextField()
 
 TextField::TextField(sf::Vector2f position, sf::Color text_color, sf::Font& font) : text_color{text_color}, font{font}
 {
-	label = Label("TextField", "Hello", font, 22, text_color, sf::Text::Regular, position);
+	label = Label("TextField", "", font, 22, text_color, sf::Text::Regular, position);
 }
 
 
