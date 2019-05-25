@@ -47,6 +47,22 @@ void WordManager::update()
 }
 
 //--------------------------------------------------------------------------
+// Compares a given input to all live Words. Removes the word if it is found
+//--------------------------------------------------------------------------
+bool WordManager::query(std::string query)
+{
+	for (int index = 0; index <= words.size(); index++)
+	{
+		if (words[index].get_drawable().getString().toAnsiString() == query)
+		{
+			remove_word(words[index].get_id());
+			return true;
+		}
+	}
+	return false;
+}
+
+//--------------------------------------------------------------------------
 // Reads words from the dictionary file into the std::vector
 //--------------------------------------------------------------------------
 void WordManager::populate_word_cache()

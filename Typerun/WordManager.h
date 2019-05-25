@@ -30,6 +30,7 @@ public:
 	WordManager();
 	WordManager(sf::Font& font, sf::Color initial_color, MessageCenter* message_center, int width, int height);
 	void update();
+	bool query(std::string query);
 private:
 	void populate_word_cache();
 	void shuffle_word_cache();
