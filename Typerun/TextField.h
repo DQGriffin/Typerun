@@ -15,6 +15,7 @@ public:
 	TextField(sf::Vector2f position, sf::Color text_color, sf::Font& font);
 	void add_character(char character);
 	void remove_last_character();
+	void clear();
 	std::string get_text();
 	sf::Text& get_drawable();
 };

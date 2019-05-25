@@ -29,6 +29,11 @@ void TextField::remove_last_character()
 	}
 }
 
+void TextField::clear()
+{
+	label.set_text("");
+}
+
 std::string TextField::get_text()
 {
 	return label.get_drawable().getString().toAnsiString();
