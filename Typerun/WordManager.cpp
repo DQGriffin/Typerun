@@ -14,7 +14,7 @@ WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter*
 	dictionary_path = "dict.txt";
 
 	max_word_cache_size = 80000;
-	word_transfer_threshold = 10;
+	word_transfer_threshold = 50;
 	min_word_speed = 1;
 	max_word_speed = 2;
 
@@ -34,6 +34,15 @@ void WordManager::update()
 	for (Word& word : words)
 	{
 		word.update();
+	}
+
+	for (Word& word : words)
+	{
+		if (word.get_drawable().getPosition().x > viewport_width)
+		{
+			// The word is off-screen, notify the engine and remove the word from the vector
+			remove_word(word.get_id());
+		}
 	}
 }
 
@@ -84,7 +93,6 @@ void WordManager::shuffle_word_cache()
 //--------------------------------------------------------------------------
 void WordManager::transfer_words(int max)
 {
-	message_center->post_message("Transfering " + std::to_string(max) + " words");
 	for (int i = 0; i < max; i++)
 	{
 		Word word = Word(word_cache.back(), sf::Vector2f(-50 * (random_x_pos() * 0.03), random_y_pos()), initial_color, font);
@@ -129,4 +137,18 @@ int WordManager::random_speed()
 	std::uniform_int_distribution<int> uniform_dist(min_word_speed, max_word_speed);
 	int result = uniform_dist(e1);
 	return result;
+}
+
+void WordManager::remove_word(int id)
+{
+	for (int index = 0; index <= words.size(); index++)
+	{
+		if (words[index].get_id() == id)
+		{
+			// The word has been found, remove it
+			words.erase(words.begin() + index);
+			break;
+		}
+	}
+
 }
