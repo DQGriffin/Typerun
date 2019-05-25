@@ -8,6 +8,19 @@ Word::Word(std::string value, sf::Vector2f position, sf::Color initial_color, sf
 {
 	label = Label(value, value, font, 24, initial_color, sf::Text::Regular, position);
 	id = generate_id();
+	alive = true;
+
+	std::cout << "Word = " << value << " | Initial X-Position = " << std::to_string(position.x) << std::endl;
+}
+
+Word& Word::operator=(Word w)
+{
+	std::swap(speed, w.speed);
+	std::swap(viewport_width, w.viewport_width);
+
+	std::swap(label, w.label);
+	std::swap(id, w.id);
+	return *this;
 }
 
 //--------------------------------------------------------------------------
@@ -15,7 +28,8 @@ Word::Word(std::string value, sf::Vector2f position, sf::Color initial_color, sf
 //--------------------------------------------------------------------------
 void Word::update()
 {
-	if (label.get_drawable().getPosition().x < viewport_width)
+	//std::cout << "Current X-Position = " << std::to_string(get_drawable().getPosition().x) << std::endl;
+	if (label.get_drawable().getPosition().x < viewport_width + 5)
 	{
 		update_position();
 		update_color();
@@ -36,6 +50,11 @@ sf::Text& Word::get_drawable()
 int Word::get_id()
 {
 	return id;
+}
+
+bool Word::is_alive()
+{
+	return alive;
 }
 
 //--------------------------------------------------------------------------
@@ -62,7 +81,7 @@ void Word::update_color()
 		r = (label.get_drawable().getPosition().x * 5) * 0.06;
 		//g = 255 - ((label.get_drawable().getPosition().x * 5) * 0.04);
 	}
-	else if (g > 0)
+	else if (g > 0 && get_drawable().getPosition().x > 0)
 	{
 		//g = 255 - ((label.get_drawable().getPosition().x * 2) * 0.08);
 		//g -= 1;
