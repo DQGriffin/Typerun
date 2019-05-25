@@ -17,6 +17,7 @@ public:
 	MessageCenter* message_center;
 	int* score;
 	double* average_onscreen_time;
+	int* misses;
 private:
 	std::string dictionary_path;
 	int max_word_cache_size;
