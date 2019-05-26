@@ -227,6 +227,9 @@ void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 	case sf::Keyboard::Enter:
 		query_input();
 		break;
+	case sf::Keyboard::Escape:
+		paused = !paused;
+		break;
 	case sf::Keyboard::A:
 		ui_text_field.add_character('a');
 		break;
