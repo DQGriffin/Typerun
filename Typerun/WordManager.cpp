@@ -42,6 +42,7 @@ void WordManager::update()
 		{
 			// The word is off-screen, notify the engine and remove the word from the vector
 			*misses += 1;
+			*score -= 15;
 			remove_word(word.get_id());
 		}
 	}
