@@ -136,6 +136,7 @@
     <ClCompile Include="EngineCore.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="MessageCenter.cpp" />
     <ClCompile Include="TextField.cpp" />
@@ -145,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="EngineCore.h" />
     <ClInclude Include="Label.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="MessageCenter.h" />
     <ClInclude Include="TextField.h" />
