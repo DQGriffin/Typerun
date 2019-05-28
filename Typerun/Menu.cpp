@@ -17,7 +17,7 @@ Menu::Menu()
 
 void Menu::move_next()
 {
-	if (selected_index < labels.size())
+	if (selected_index != labels.size() - 1)
 	{
 		selected_index++;
 	}
