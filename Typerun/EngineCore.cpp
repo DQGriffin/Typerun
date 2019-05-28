@@ -29,7 +29,7 @@ EngineCore::EngineCore()
 	word_manager.score = &score;
 	word_manager.misses = &misses;
 
-	main_menu = MainMenu(&font);
+	main_menu = MainMenu(&font, width, height);
 	//display_main_menu();
 }
 
