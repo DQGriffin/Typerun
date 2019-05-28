@@ -123,17 +123,17 @@ void EngineCore::game_loop()
 			{
 				window.close();
 			}
-			else if (event.type == sf::Event::KeyReleased)
+			else if (event.type == sf::Event::KeyPressed)
 			{
 				parse_keyboard_input(event.key);
 			}
-
 		}
 
 		if (!paused)
 		{
 			//update();
 		}
+		main_menu.update();
 		message_center.update();
 		window.clear();
 		display_main_menu();
@@ -252,6 +252,13 @@ void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 		break;
 	case sf::Keyboard::End:
 		std::exit(0);
+		break;
+	case sf::Keyboard::Up:
+		main_menu.move_previous();
+		break;
+	case sf::Keyboard::Down:
+		main_menu.move_next();
+		break;
 	case sf::Keyboard::A:
 		ui_text_field.add_character('a');
 		break;
