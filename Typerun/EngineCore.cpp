@@ -250,6 +250,8 @@ void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 	case sf::Keyboard::Pause:
 		paused = !paused;
 		break;
+	case sf::Keyboard::End:
+		std::exit(0);
 	case sf::Keyboard::A:
 		ui_text_field.add_character('a');
 		break;
