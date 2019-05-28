@@ -8,6 +8,7 @@
 #include "Label.h"
 #include "WordManager.h"
 #include "TextField.h"
+#include "MainMenu.h"
 
 class EngineCore
 {
@@ -38,6 +39,7 @@ private:
 	Label ui_misses_label;
 	TextField ui_text_field;
 	WordManager word_manager;
+	MainMenu main_menu;
 
 public:
 	EngineCore();
@@ -54,6 +56,7 @@ private:
 	void display_messages();
 	void display_words();
 	void display_ui();
+	void display_main_menu();
 	void query_input();
 	void parse_keyboard_input(sf::Event::KeyEvent key_event);
 };

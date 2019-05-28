@@ -4,16 +4,16 @@
 
 Menu::Menu()
 {
+	selected_color = sf::Color::Cyan;
+	default_color = sf::Color::White;
 }
 
-Menu::Menu(sf::Font & font) : font{font}
-{
-}
-
-
-Menu::~Menu()
-{
-}
+//Menu::Menu(sf::Font & font) : font{font}
+//{
+//	selected_color = sf::Color::Cyan;
+//	default_color = sf::Color::White;
+//	std::cout << "Menu constructor called" << std::endl;
+//}
 
 void Menu::move_next()
 {
@@ -50,3 +50,8 @@ int Menu::get_selected_index()
 {
 	return selected_index;
 }
+
+//void Menu::set_font(sf::Font & font)
+//{
+//	this->font = font;
+//}

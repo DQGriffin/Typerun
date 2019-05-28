@@ -13,13 +13,14 @@ EngineCore::EngineCore()
 
 	paused = false;
 	score_increment = 20;
+	maximum_misses = 15;
 
 	initialize_font();
 	initialize_colors();
 	initialize_ui();
 
 	message_center = MessageCenter(font, height);
-	message_center.post_message("Engine initialized");
+	message_center.post_message("Starting engine");
 	message_center.post_message("Height: " + std::to_string(height));
 	message_center.post_message("Width: " + std::to_string(width));
 
@@ -27,7 +28,9 @@ EngineCore::EngineCore()
 	word_manager.average_onscreen_time = &average_onscreen_time;
 	word_manager.score = &score;
 	word_manager.misses = &misses;
-//	ui_text_field = TextField(sf::Vector2f(50, 50), ui_text_color, font);
+
+	main_menu = MainMenu(&font);
+	//display_main_menu();
 }
 
 
@@ -129,14 +132,15 @@ void EngineCore::game_loop()
 
 		if (!paused)
 		{
-			update();
+			//update();
 		}
 		message_center.update();
 		window.clear();
+		display_main_menu();
 		display_messages();
 		update_ui();
 		window.draw(shape);
-		display_words();
+		//display_words();
 		display_ui();
 		window.display();
 	}
@@ -149,6 +153,11 @@ void EngineCore::game_loop()
 void EngineCore::update()
 {
 	update_words();
+	if (misses >= maximum_misses)
+	{
+		// The game is over
+		paused = true;
+	}
 }
 
 //--------------------------------------------------------------------------
@@ -198,6 +207,14 @@ void EngineCore::display_ui()
 	window.draw(ui_score_label.get_drawable());
 	window.draw(ui_misses_label.get_drawable());
 	window.draw(ui_text_field.get_drawable());
+}
+
+void EngineCore::display_main_menu()
+{
+	for (Label& label : main_menu.labels)
+	{
+		window.draw(label.get_drawable());
+	}
 }
 
 void EngineCore::query_input()
