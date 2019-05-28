@@ -6,7 +6,7 @@ MainMenu::MainMenu()
 {
 }
 
-MainMenu::MainMenu(sf::Font* font)
+MainMenu::MainMenu(sf::Font* font, int width, int height)
 {
 	//font_local = font;
 	//set_font(font_local);

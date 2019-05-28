@@ -9,7 +9,7 @@ private:
 	sf::Font font_local;
 public:
 	MainMenu();
-	MainMenu(sf::Font* font);
+	MainMenu(sf::Font* font, int width, int hieght);
 private:
 	void initialize();
 };
