@@ -49,6 +49,8 @@ private:
 	void initialize_font();
 	void initialize_colors();
 	void initialize_ui();
+	void initialize_message_center();
+	void initialize_word_manager();
 	void game_loop();
 	void update();
 	void update_words();

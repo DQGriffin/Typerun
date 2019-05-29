@@ -18,16 +18,8 @@ EngineCore::EngineCore()
 	initialize_font();
 	initialize_colors();
 	initialize_ui();
-
-	message_center = MessageCenter(font, height);
-	message_center.post_message("Starting engine");
-	message_center.post_message("Height: " + std::to_string(height));
-	message_center.post_message("Width: " + std::to_string(width));
-
-	word_manager = WordManager(font, initial_word_color, &message_center, width, ui_horizontal_bar.getPosition().y - 50);
-	word_manager.average_onscreen_time = &average_onscreen_time;
-	word_manager.score = &score;
-	word_manager.misses = &misses;
+	initialize_message_center();
+	initialize_word_manager();
 
 	main_menu = MainMenu(&font, width, height);
 	//display_main_menu();
@@ -91,6 +83,22 @@ void EngineCore::initialize_ui()
 	
 	ui_text_field = TextField(sf::Vector2f(35, height - 40), ui_text_color, font);
 	
+}
+
+void EngineCore::initialize_message_center()
+{
+	message_center = MessageCenter(font, height);
+	message_center.post_message("Starting engine");
+	message_center.post_message("Height: " + std::to_string(height));
+	message_center.post_message("Width: " + std::to_string(width));
+}
+
+void EngineCore::initialize_word_manager()
+{
+	word_manager = WordManager(font, initial_word_color, &message_center, width, ui_horizontal_bar.getPosition().y - 50);
+	word_manager.average_onscreen_time = &average_onscreen_time;
+	word_manager.score = &score;
+	word_manager.misses = &misses;
 }
 
 //--------------------------------------------------------------------------
