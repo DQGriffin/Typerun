@@ -14,7 +14,7 @@ namespace Themes
 	};
 
 	struct NoirTheme {
-		 sf::Color background_color = sf::Color(41, 40, 39);
+		 sf::Color background_color = sf::Color(21, 21, 21);
 		sf::Color initial_word_color = sf::Color(255, 255, 255);
 		sf::Color horizontal_bar_color = sf::Color(255, 255, 255);
 		sf::Color ui_text_color = sf::Color(255, 255, 255);
