@@ -15,11 +15,14 @@ EngineCore::EngineCore()
 	score_increment = 20;
 	maximum_misses = 15;
 
+	theme = Themes::GameTheme::Noir;
+
 	initialize_font();
-	initialize_colors();
+	//initialize_colors();
+	apply_theme();
 	initialize_ui();
 	initialize_message_center();
-	initialize_word_manager();
+	//initialize_word_manager();
 
 	main_menu = MainMenu(&font, width, height);
 	//display_main_menu();
@@ -101,6 +104,26 @@ void EngineCore::initialize_word_manager()
 	word_manager.misses = &misses;
 }
 
+void EngineCore::apply_theme()
+{
+	if (theme == Themes::GameTheme::Default)
+	{
+		Themes::DefaultTheme default_theme;
+		background_color = default_theme.background_color;
+		initial_word_color = default_theme.initial_word_color;
+		horizontal_bar_color = default_theme.horizontal_bar_color;
+		ui_text_color = default_theme.ui_text_color;
+	}
+	else if (theme == Themes::GameTheme::Noir)
+	{
+		Themes::NoirTheme noir_theme;
+		background_color = noir_theme.background_color;
+		initial_word_color = noir_theme.initial_word_color;
+		horizontal_bar_color = noir_theme.horizontal_bar_color;
+		ui_text_color = noir_theme.ui_text_color;
+	}
+}
+
 //--------------------------------------------------------------------------
 // The main game loop
 //--------------------------------------------------------------------------
@@ -143,7 +166,7 @@ void EngineCore::game_loop()
 		}
 		main_menu.update();
 		message_center.update();
-		window.clear();
+		window.clear(background_color);
 		display_main_menu();
 		display_messages();
 		update_ui();

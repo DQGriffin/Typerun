@@ -9,6 +9,7 @@
 #include "WordManager.h"
 #include "TextField.h"
 #include "MainMenu.h"
+#include "GameThemes.h"
 
 class EngineCore
 {
@@ -16,6 +17,7 @@ public:
 	const std::string version = "0.1.1";
 	MessageCenter message_center;
 	std::vector<Word> words;
+	enum class GameTheme{Colorful, Noir};
 private:
 	int width;
 	int height;
@@ -40,6 +42,7 @@ private:
 	TextField ui_text_field;
 	WordManager word_manager;
 	MainMenu main_menu;
+	Themes::GameTheme theme;
 
 public:
 	EngineCore();
@@ -51,6 +54,7 @@ private:
 	void initialize_ui();
 	void initialize_message_center();
 	void initialize_word_manager();
+	void apply_theme();
 	void game_loop();
 	void update();
 	void update_words();
