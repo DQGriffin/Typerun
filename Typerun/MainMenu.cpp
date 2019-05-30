@@ -11,8 +11,11 @@ MainMenu::MainMenu(sf::Font* font, int width, int height)
 	//font_local = font;
 	//set_font(font_local);
 
-	Label label = Label("LL", "Play", *font, 36, selected_color, sf::Text::Regular, sf::Vector2f(100, 100));
-	Label exit_label = Label("Exit", "Exit", *font, 16, default_color, sf::Text::Regular, sf::Vector2f(100, 150));
+	int p_character_size = width / 8;
+	int e_character_size = p_character_size / 4;
+
+	Label label = Label("LL", "Play", *font, p_character_size, selected_color, sf::Text::Regular, sf::Vector2f((width / 2) - ((p_character_size / 2) * 2), (height / 2) - ((p_character_size / 2) * 2)));
+	Label exit_label = Label("Exit", "Exit", *font, e_character_size, default_color, sf::Text::Regular, sf::Vector2f((width / 2) - ((e_character_size / 2) * 2), label.get_drawable().getPosition().y + 200));
 	labels.push_back(label);
 	labels.push_back(exit_label);
 	//initialize();
