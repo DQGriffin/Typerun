@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineCore.h" />
+    <ClInclude Include="GameThemes.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menu.h" />
