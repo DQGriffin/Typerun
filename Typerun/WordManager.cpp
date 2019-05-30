@@ -8,8 +8,9 @@ WordManager::WordManager()
 //--------------------------------------------------------------------------
 // WordManager constructor
 //--------------------------------------------------------------------------
-WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter* message_center, int width, int height) : font{font}, message_center{message_center}, viewport_width{width}, viewport_height{height}
+WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter* message_center, int width, int height, bool shift_word_color) : font{font}, message_center{message_center}, viewport_width{width}, viewport_height{height}
 {
+	this->shift_word_color = shift_word_color;
 	this->initial_color = initial_color;
 	dictionary_path = "dict.txt";
 
@@ -113,7 +114,7 @@ void WordManager::transfer_words(int max)
 {
 	for (int i = 0; i < max; i++)
 	{
-		Word word = Word(word_cache.back(), sf::Vector2f(-50 * (random_x_pos() * 0.03), random_y_pos()), initial_color, font);
+		Word word = Word(word_cache.back(), sf::Vector2f(-50 * (random_x_pos() * 0.03), random_y_pos()), initial_color, font, shift_word_color);
 		word.viewport_width = viewport_width;
 		word.speed = random_speed();
 		words.push_back(word);

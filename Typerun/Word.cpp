@@ -4,11 +4,12 @@
 //--------------------------------------------------------------------------
 // Word constructor
 //--------------------------------------------------------------------------
-Word::Word(std::string value, sf::Vector2f position, sf::Color initial_color, sf::Font& font)
+Word::Word(std::string value, sf::Vector2f position, sf::Color initial_color, sf::Font& font, bool shift_color)
 {
 	label = Label(value, value, font, 24, initial_color, sf::Text::Regular, position);
 	id = generate_id();
 	alive = true;
+	this->shift_color = shift_color;
 }
 
 Word& Word::operator=(Word w)
@@ -30,7 +31,10 @@ void Word::update()
 	if (label.get_drawable().getPosition().x < viewport_width + 5)
 	{
 		update_position();
-		update_color();
+		if (shift_color)
+		{
+			update_color();
+		}
 	}
 }
 

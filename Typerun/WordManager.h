@@ -26,12 +26,13 @@ private:
 	int viewport_height;
 	int min_word_speed;
 	int max_word_speed;
+	bool shift_word_color;
 	std::vector<std::string> word_cache;
 	sf::Font font;
 	sf::Color initial_color;
 public:
 	WordManager();
-	WordManager(sf::Font& font, sf::Color initial_color, MessageCenter* message_center, int width, int height);
+	WordManager(sf::Font& font, sf::Color initial_color, MessageCenter* message_center, int width, int height, bool shift_word_color);
 	void update();
 	bool query(std::string query);
 private:
