@@ -214,7 +214,7 @@ void EngineCore::update()
 	if (misses >= maximum_misses)
 	{
 		// The game is over
-		paused = true;
+		state = GameState::Paused;
 	}
 }
 
@@ -297,10 +297,10 @@ void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 	default:
 		break;
 	case sf::Keyboard::Backspace:
-		ui_text_field.remove_last_character();
+		if (state == GameState::Play) { ui_text_field.remove_last_character(); }
 		break;
 	case sf::Keyboard::Enter:
-		query_input();
+		if (state == GameState::Play) { query_input(); }
 		break;
 	case sf::Keyboard::Escape:
 		state == GameState::Play ? state = GameState::Paused : state = GameState::Play;
@@ -318,85 +318,85 @@ void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 		main_menu.move_next();
 		break;
 	case sf::Keyboard::A:
-		ui_text_field.add_character('a');
+		if (state == GameState::Play) { ui_text_field.add_character('a'); }
 		break;
 	case sf::Keyboard::B:
-		ui_text_field.add_character('b');
+		if (state == GameState::Play) { ui_text_field.add_character('b'); }
 		break;
 	case sf::Keyboard::C:
-		ui_text_field.add_character('c');
+		if (state == GameState::Play) { ui_text_field.add_character('c'); }
 		break;
 	case sf::Keyboard::D:
-		ui_text_field.add_character('d');
+		if (state == GameState::Play) { ui_text_field.add_character('cd'); }
 		break;
 	case sf::Keyboard::E:
-		ui_text_field.add_character('e');
+		if (state == GameState::Play) { ui_text_field.add_character('e'); }
 		break;
 	case sf::Keyboard::F:
-		ui_text_field.add_character('f');
+		if (state == GameState::Play) { ui_text_field.add_character('f'); }
 		break;
 	case sf::Keyboard::G:
-		ui_text_field.add_character('g');
+		if (state == GameState::Play) { ui_text_field.add_character('g'); }
 		break;
 	case sf::Keyboard::H:
-		ui_text_field.add_character('h');
+		if (state == GameState::Play) { ui_text_field.add_character('h'); }
 		break;
 	case sf::Keyboard::I:
-		ui_text_field.add_character('i');
+		if (state == GameState::Play) { ui_text_field.add_character('i'); }
 		break;
 	case sf::Keyboard::J:
-		ui_text_field.add_character('j');
+		if (state == GameState::Play) { ui_text_field.add_character('j'); }
 		break;
 	case sf::Keyboard::K:
-		ui_text_field.add_character('k');
+		if (state == GameState::Play) { ui_text_field.add_character('k'); }
 		break;
 	case sf::Keyboard::L:
-		ui_text_field.add_character('l');
+		if (state == GameState::Play) { ui_text_field.add_character('l'); }
 		break;
 	case sf::Keyboard::M:
-		ui_text_field.add_character('m');
+		if (state == GameState::Play) { ui_text_field.add_character('m'); }
 		break;
 	case sf::Keyboard::N:
-		ui_text_field.add_character('n');
+		if (state == GameState::Play) { ui_text_field.add_character('n'); }
 		break;
 	case sf::Keyboard::O:
-		ui_text_field.add_character('o');
+		if (state == GameState::Play) { ui_text_field.add_character('o'); }
 		break;
 	case sf::Keyboard::P:
-		ui_text_field.add_character('p');
+		if (state == GameState::Play) { ui_text_field.add_character('p'); }
 		break;
 	case sf::Keyboard::Q:
-		ui_text_field.add_character('q');
+		if (state == GameState::Play) { ui_text_field.add_character('q'); }
 		break;
 	case sf::Keyboard::R:
-		ui_text_field.add_character('r');
+		if (state == GameState::Play) { ui_text_field.add_character('r'); }
 		break;
 	case sf::Keyboard::S:
-		ui_text_field.add_character('s');
+		if (state == GameState::Play) { ui_text_field.add_character('s'); }
 		break;
 	case sf::Keyboard::T:
-		ui_text_field.add_character('t');
+		if (state == GameState::Play) { ui_text_field.add_character('t'); }
 		break;
 	case sf::Keyboard::U:
-		ui_text_field.add_character('u');
+		if (state == GameState::Play) { ui_text_field.add_character('u'); }
 		break;
 	case sf::Keyboard::V:
-		ui_text_field.add_character('v');
+		if (state == GameState::Play) { ui_text_field.add_character('v'); }
 		break;
 	case sf::Keyboard::W:
-		ui_text_field.add_character('w');
+		if (state == GameState::Play) { ui_text_field.add_character('w'); }
 		break;
 	case sf::Keyboard::X:
-		ui_text_field.add_character('x');
+		if (state == GameState::Play) { ui_text_field.add_character('x'); }
 		break;
 	case sf::Keyboard::Y:
-		ui_text_field.add_character('y');
+		if (state == GameState::Play) { ui_text_field.add_character('y'); }
 		break;
 	case sf::Keyboard::Z:
-		ui_text_field.add_character('z');
+		if (state == GameState::Play) { ui_text_field.add_character('z'); }
 		break;
 	case sf::Keyboard::Hyphen:
-		ui_text_field.add_character('-');
+		if (state == GameState::Play) { ui_text_field.add_character('-'); }
 		break;
 	}
 }
