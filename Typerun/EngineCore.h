@@ -17,7 +17,7 @@ public:
 	const std::string version = "0.1.1";
 	MessageCenter message_center;
 	std::vector<Word> words;
-	enum class GameTheme{Colorful, Noir};
+	enum class GameState{Play, Menu, Paused};
 private:
 	int width;
 	int height;
@@ -28,6 +28,7 @@ private:
 	double average_onscreen_time;
 	bool display_debug_messages;
 	bool paused;
+	bool shift_word_color;
 	sf::RenderWindow window;
 	sf::Font font;
 	sf::Color background_color;
@@ -43,6 +44,7 @@ private:
 	WordManager word_manager;
 	MainMenu main_menu;
 	Themes::GameTheme theme;
+	GameState state;
 
 public:
 	EngineCore();

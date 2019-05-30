@@ -15,17 +15,17 @@ EngineCore::EngineCore()
 	score_increment = 20;
 	maximum_misses = 15;
 
+	//theme = Themes::GameTheme::Default;
 	theme = Themes::GameTheme::Noir;
 
 	initialize_font();
-	//initialize_colors();
 	apply_theme();
 	initialize_ui();
 	initialize_message_center();
-	//initialize_word_manager();
+	initialize_word_manager();
 
 	main_menu = MainMenu(&font, width, height);
-	//display_main_menu();
+	state = GameState::Play;
 }
 
 
@@ -98,7 +98,7 @@ void EngineCore::initialize_message_center()
 
 void EngineCore::initialize_word_manager()
 {
-	word_manager = WordManager(font, initial_word_color, &message_center, width, ui_horizontal_bar.getPosition().y - 50);
+	word_manager = WordManager(font, initial_word_color, &message_center, width, ui_horizontal_bar.getPosition().y - 50, shift_word_color);
 	word_manager.average_onscreen_time = &average_onscreen_time;
 	word_manager.score = &score;
 	word_manager.misses = &misses;
@@ -113,6 +113,7 @@ void EngineCore::apply_theme()
 		initial_word_color = default_theme.initial_word_color;
 		horizontal_bar_color = default_theme.horizontal_bar_color;
 		ui_text_color = default_theme.ui_text_color;
+		shift_word_color = default_theme.shift_word_color;
 	}
 	else if (theme == Themes::GameTheme::Noir)
 	{
@@ -121,6 +122,7 @@ void EngineCore::apply_theme()
 		initial_word_color = noir_theme.initial_word_color;
 		horizontal_bar_color = noir_theme.horizontal_bar_color;
 		ui_text_color = noir_theme.ui_text_color;
+		shift_word_color = noir_theme.shift_word_color;
 	}
 }
 
@@ -160,9 +162,34 @@ void EngineCore::game_loop()
 			}
 		}
 
-		if (!paused)
+		//- New update loop start
+		window.clear();
+		if (state == GameState::Menu)
 		{
-			//update();
+			main_menu.update();
+			display_main_menu();
+		}
+		else if (state == GameState::Play)
+		{
+			update();
+			window.draw(shape); // For debugging purposes
+			display_words();
+			update_ui();
+			display_ui();
+		}
+		else if (state == GameState::Paused)
+		{
+			display_words();
+			display_ui();
+		}
+		message_center.update();
+		display_messages();
+		window.display();
+		//- New update loop end
+
+		/*if (!paused)
+		{
+			update();
 		}
 		main_menu.update();
 		message_center.update();
@@ -171,9 +198,9 @@ void EngineCore::game_loop()
 		display_messages();
 		update_ui();
 		window.draw(shape);
-		//display_words();
+		display_words();
 		display_ui();
-		window.display();
+		window.display();*/
 	}
 
 }
@@ -276,10 +303,10 @@ void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 		query_input();
 		break;
 	case sf::Keyboard::Escape:
-		paused = !paused;
+		state == GameState::Play ? state = GameState::Paused : state = GameState::Play;
 		break;
 	case sf::Keyboard::Pause:
-		paused = !paused;
+		state == GameState::Play ? state = GameState::Paused : state = GameState::Play;
 		break;
 	case sf::Keyboard::End:
 		std::exit(0);
