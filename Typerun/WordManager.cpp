@@ -160,7 +160,7 @@ int WordManager::random_speed()
 
 void WordManager::remove_word(int id)
 {
-	for (int index = 0; index <= words.size(); index++)
+	for (int index = 0; index < words.size(); index++)
 	{
 		if (words[index].get_id() == id)
 		{
