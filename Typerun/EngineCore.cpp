@@ -184,6 +184,8 @@ void EngineCore::game_loop()
 		window.clear();
 		if (state == GameState::Menu)
 		{
+			update_words();
+			display_words();
 			main_menu.update();
 			display_main_menu();
 		}
