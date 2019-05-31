@@ -5,11 +5,15 @@
 #include "SFML/Graphics/Color.hpp"
 #include "SFML/Graphics/Font.hpp"
 #include "SFML/System/Vector2.hpp"
+#include "SFML/Graphics/RectangleShape.hpp"
 
 class Menu
 {
 public:
 	std::vector<Label> labels;
+	sf::RectangleShape selection_box;
+	sf::Color selection_box_color;
+	sf::Color background_color;
 private:
 	int selected_index = 0;
 protected:

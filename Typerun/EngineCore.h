@@ -56,7 +56,9 @@ private:
 	void initialize_ui();
 	void initialize_message_center();
 	void initialize_word_manager();
+	void initialize_menus();
 	void apply_theme();
+	void set_state(GameState state);
 	void game_loop();
 	void update();
 	void update_words();

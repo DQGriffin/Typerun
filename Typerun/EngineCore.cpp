@@ -24,12 +24,12 @@ EngineCore::EngineCore()
 	initialize_message_center();
 	initialize_word_manager();
 
-	message_center.post_message("Starting engine");
 	message_center.post_message("Height: " + std::to_string(height));
 	message_center.post_message("Width: " + std::to_string(width));
 
-	main_menu = MainMenu(&font, width, height);
-	state = GameState::Play;
+	initialize_menus();
+	//state = GameState::Play;
+	set_state(GameState::Menu);
 }
 
 
@@ -105,6 +105,11 @@ void EngineCore::initialize_word_manager()
 	word_manager.misses = &misses;
 }
 
+void EngineCore::initialize_menus()
+{
+	main_menu = MainMenu(&font, width, height);
+}
+
 void EngineCore::apply_theme()
 {
 	if (theme == Themes::GameTheme::Default)
@@ -127,6 +132,15 @@ void EngineCore::apply_theme()
 	}
 }
 
+void EngineCore::set_state(GameState state)
+{
+	if (state == GameState::Menu)
+	{
+		window.create(sf::VideoMode(width, height), "Typerun - " + version, sf::Style::Close);
+	}
+	this->state = state;
+}
+
 //--------------------------------------------------------------------------
 // The main game loop
 //--------------------------------------------------------------------------
@@ -138,14 +152,6 @@ void EngineCore::game_loop()
 	// For debug purposes
 	sf::CircleShape shape(5.f);
 	shape.setFillColor(sf::Color::Green);
-
-	/*Word word = Word("dexterity", sf::Vector2f(50, 50), initial_word_color, font);
-	Word word2 = Word("destiny", sf::Vector2f(25, 75), initial_word_color, font);
-	word.viewport_width = width;
-	word2.viewport_width = width;
-	word2.speed = 3;
-	words.push_back(word);
-	words.push_back(word2);*/
 
 	while (window.isOpen())
 	{
@@ -165,6 +171,7 @@ void EngineCore::game_loop()
 				height = size.y;
 				initialize_ui();
 				initialize_message_center();
+				initialize_menus();
 				window.setView(view);
 			}
 			else if (event.type == sf::Event::KeyPressed)
@@ -280,6 +287,7 @@ void EngineCore::display_ui()
 
 void EngineCore::display_main_menu()
 {
+	window.draw(main_menu.selection_box);
 	for (Label& label : main_menu.labels)
 	{
 		window.draw(label.get_drawable());
@@ -408,6 +416,9 @@ void EngineCore::parse_keyboard_input(sf::Event::KeyEvent key_event)
 		break;
 	case sf::Keyboard::Hyphen:
 		if (state == GameState::Play) { ui_text_field.add_character('-'); }
+		break;
+	case sf::Keyboard::Quote:
+		if (state == GameState::Play) { ui_text_field.add_character('\''); }
 		break;
 	}
 }
