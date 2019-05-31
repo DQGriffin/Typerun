@@ -24,6 +24,10 @@ EngineCore::EngineCore()
 	initialize_message_center();
 	initialize_word_manager();
 
+	message_center.post_message("Starting engine");
+	message_center.post_message("Height: " + std::to_string(height));
+	message_center.post_message("Width: " + std::to_string(width));
+
 	main_menu = MainMenu(&font, width, height);
 	state = GameState::Play;
 }
@@ -91,14 +95,11 @@ void EngineCore::initialize_ui()
 void EngineCore::initialize_message_center()
 {
 	message_center = MessageCenter(font, height);
-	message_center.post_message("Starting engine");
-	message_center.post_message("Height: " + std::to_string(height));
-	message_center.post_message("Width: " + std::to_string(width));
 }
 
 void EngineCore::initialize_word_manager()
 {
-	word_manager = WordManager(font, initial_word_color, &message_center, width, ui_horizontal_bar.getPosition().y - 50, shift_word_color);
+	word_manager = WordManager(font, initial_word_color, &message_center, &width, &height, shift_word_color);
 	word_manager.average_onscreen_time = &average_onscreen_time;
 	word_manager.score = &score;
 	word_manager.misses = &misses;
@@ -155,6 +156,16 @@ void EngineCore::game_loop()
 			if (event.type == sf::Event::Closed)
 			{
 				window.close();
+			}
+			else if (event.type == sf::Event::Resized)
+			{
+				sf::Vector2f size = static_cast<sf::Vector2f>(window.getSize());
+				sf::View view = sf::View(sf::FloatRect(0.f, 0.f, size.x, size.y));
+				width = size.x;
+				height = size.y;
+				initialize_ui();
+				initialize_message_center();
+				window.setView(view);
 			}
 			else if (event.type == sf::Event::KeyPressed)
 			{

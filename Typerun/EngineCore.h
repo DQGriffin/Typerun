@@ -14,7 +14,7 @@
 class EngineCore
 {
 public:
-	const std::string version = "0.1.1";
+	const std::string version = "0.2.0";
 	MessageCenter message_center;
 	std::vector<Word> words;
 	enum class GameState{Play, Menu, Paused};

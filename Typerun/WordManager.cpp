@@ -8,7 +8,7 @@ WordManager::WordManager()
 //--------------------------------------------------------------------------
 // WordManager constructor
 //--------------------------------------------------------------------------
-WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter* message_center, int width, int height, bool shift_word_color) : font{font}, message_center{message_center}, viewport_width{width}, viewport_height{height}
+WordManager::WordManager(sf::Font& font, sf::Color initial_color, MessageCenter* message_center, int* width, int *height, bool shift_word_color) : font{font}, message_center{message_center}, viewport_width{width}, viewport_height{height}
 {
 	this->shift_word_color = shift_word_color;
 	this->initial_color = initial_color;
@@ -39,7 +39,7 @@ void WordManager::update()
 
 	for (Word& word : words)
 	{
-		if (word.get_drawable().getPosition().x > viewport_width)
+		if (word.get_drawable().getPosition().x > *viewport_width)
 		{
 			// The word is off-screen, notify the engine and remove the word from the vector
 			*misses += 1;
@@ -129,7 +129,7 @@ int WordManager::random_x_pos()
 {
 	std::random_device r;
 	std::default_random_engine e1(r());
-	std::uniform_int_distribution<int> uniform_dist(0, viewport_width);
+	std::uniform_int_distribution<int> uniform_dist(0, *viewport_width);
 	int result = uniform_dist(e1);
 	return result;
 }
@@ -141,7 +141,7 @@ int WordManager::random_y_pos()
 {
 	std::random_device r;
 	std::default_random_engine e1(r());
-	std::uniform_int_distribution<int> uniform_dist(0, viewport_height);
+	std::uniform_int_distribution<int> uniform_dist(0, (*viewport_height - 100));
 	int result = uniform_dist(e1);
 	return result;
 }

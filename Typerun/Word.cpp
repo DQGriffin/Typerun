@@ -28,7 +28,7 @@ Word& Word::operator=(Word w)
 void Word::update()
 {
 	//std::cout << "Current X-Position = " << std::to_string(get_drawable().getPosition().x) << std::endl;
-	if (label.get_drawable().getPosition().x < viewport_width + 5)
+	if (label.get_drawable().getPosition().x < *viewport_width + 5)
 	{
 		update_position();
 		if (shift_color)

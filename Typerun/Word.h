@@ -8,7 +8,7 @@ class Word
 {
 public:
 	int speed = 1;
-	int viewport_width;
+	int* viewport_width;
 private:
 	Label label;
 	int id;
